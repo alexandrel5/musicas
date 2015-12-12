@@ -1,0 +1,4 @@
+http://archimedeanco.com/wsgi-tutorial/#
+https://code.google.com/p/modwsgi/wiki/QuickConfigurationGuide
+http://docs.python.org/2/library/wsgiref.html
+http://webpython.codepoint.net/wsgi_tutorial

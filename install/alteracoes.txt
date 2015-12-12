@@ -1,0 +1,27 @@
+vim /usr/lib/python2.7/site.py
+editar e mudar a linha 
+    encoding = "ascii" # Default value set by _PyUnicode_Init()
+para 
+    encoding = "utf-8"
+para forcar o python 2.7 a trabalhar com utf-8 como padrao
+pois o mod_wsgi busca a codificacao padrao do python que antes era ascii com no maximo 128 caracteres
+
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from webob import Request
+
+def application(environ, start_response):
+        status = '200 OK'
+        output = ''
+
+        if environ['REQUEST_METHOD'].upper() == 'GET' and environ['PATH_INFO'].lower() == '/p': #progresso da conversao
+                req = Request(environ)#aqui chega todas as requisicoes
+                p = req.params.get('id', '').encode('UTF-8')
+                output = p
+        else:
+                output = u'@#$%Áa·ÛÈ¬ı‘'.encode('UTF-8')
+
+        response_headers = [('Content-type', 'text/html; charset=UTF-8'), ('Content-Length', str(len(output)))]
+        start_response(status, response_headers)
+        return [output]

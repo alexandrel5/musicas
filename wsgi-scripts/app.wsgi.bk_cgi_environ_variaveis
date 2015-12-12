@@ -1,0 +1,21 @@
+def form():
+	return """\
+<html><body>
+<form enctype="multipart/form-data" action="./upload" method"post">
+<p>File: <input type="file" name="file"></p>
+<p><input type="submit" value="Upload"></p>
+</form>
+</body></html>
+"""
+
+def application(environ, start_response):
+	status = '200 OK'
+	response_body = ['%s: %s' % (key, value)
+			for key, value in sorted(environ.items())]	
+	response_body = '\n'.join(response_body)
+	
+	response_headers = [('Content-type', 'text/plain'),
+			('Content-Length', str(len(response_body)))]
+	start_response(status, response_headers)
+	
+	return [response_body]

@@ -1,0 +1,12 @@
+ffmpeg -i file.flv -f mp3 nomefile.mp3
+
+apt-get install ffmpeg
+apt-get install libavcodec-extra-53
+opcional apt-get install ffmpeg libavcodec-extra-*
+sudo apt-get install python-pip
+pip install --upgrade youtube_dl
+pip install requests
+
+pip install WebOb==dev
+pip install beautifulsoup4
+pip install html5lib
